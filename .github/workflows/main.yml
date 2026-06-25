@@ -18,6 +18,14 @@ jobs:
           flutter-version: '3.24.0'
           channel: 'stable'
 
+      - name: Extract project from ZIP
+        run: |
+          sudo apt-get install -y unzip
+          unzip haqak_app_complete.zip
+          mv flutter_app/* .
+          mv flutter_app/.* . 2>/dev/null || true
+          rm -rf flutter_app haqak_app_complete.zip
+
       - name: Get dependencies
         run: flutter pub get
 
